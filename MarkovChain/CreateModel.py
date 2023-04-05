@@ -19,13 +19,13 @@ if __name__ == "__main__":
     tokens.append(prevToken)
     print(words[1:])
     for word in words[1:]:
-        prevToken = prevToken.AddNextNode(word, tokens)
+        prevToken = prevToken.add_next_node(word, tokens)
         if not prevToken in tokens:
             tokens.append(prevToken)
     for token in tokens:
-        print(token.lexeme + ":")
-        for connection in token.nextNodes:
-            print("\t" + connection.token.lexeme + ": " + str(connection.occurences))
+        print(token.Lexeme + ":")
+        for connection in token.NextNodes:
+            print("\t" + connection.Token.Lexeme + ": " + str(connection.Occurrences))
 
 
 

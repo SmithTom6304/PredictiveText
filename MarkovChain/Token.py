@@ -1,34 +1,35 @@
 class Token:
     def __init__(self, lexeme):
-        self.lexeme = lexeme
-        self.nextNodes = set()
+        self.Lexeme = lexeme
+        self.NextNodes = set()
+
     def __eq__(self, other):
-        if(other == None):
+        if other is None:
             return False
-        return self.lexeme == other.lexeme
-    def AddNextNode(self, lexeme, existingTokens):
-        existingNode = None
-        for node in self.nextNodes:
-            if node.token.lexeme == lexeme:
-                existingNode = node
+        return self.Lexeme == other.Lexeme
+
+    def add_next_node(self, lexeme, existing_tokens):
+        existing_node = None
+        for node in self.NextNodes:
+            if node.Token.Lexeme == lexeme:
+                existing_node = node
                 break
-        if existingNode != None:
-            existingNode.occurences += 1
-            return existingNode.token
+        if existing_node is not None:
+            existing_node.Occurrences += 1
+            return existing_node.Token
         else:
-            tokenExists = False
-            newToken = None
-            for token in existingTokens:
-                if token.lexeme == lexeme:
-                    newToken = token
+            new_token = None
+            for token in existing_tokens:
+                if token.Lexeme == lexeme:
+                    new_token = token
                     break
-            if newToken == None:
-                newToken = Token(lexeme)
-            self.nextNodes.add(TokenConnection(newToken))
-            return newToken
+            if new_token is None:
+                new_token = Token(lexeme)
+            self.NextNodes.add(TokenConnection(new_token))
+            return new_token
 
 
 class TokenConnection:
     def __init__(self, token):
-        self.token = token
-        self.occurences = 1
+        self.Token = token
+        self.Occurrences = 1
